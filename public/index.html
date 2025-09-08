@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PetitDej</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+    <h1>🥐 PetitDej</h1>
+    <div id="auth-area"></div>
+</header>
+<main>
+    <section class="calendar-controls">
+        <button id="prev-month">◀</button>
+        <h2 id="month-label"></h2>
+        <button id="next-month">▶</button>
+    </section>
+    <section id="calendar"></section>
+</main>
+<dialog id="reserve-dialog">
+    <form id="reserve-form" method="dialog">
+        <h3>Réserver le <span id="reserve-date"></span></h3>
+        <textarea id="reserve-desc" placeholder="Description (optionnel)"></textarea>
+        <menu>
+            <button value="cancel">Annuler</button>
+            <button id="reserve-confirm">Réserver</button>
+        </menu>
+    </form>
+</dialog>
+<dialog id="login-dialog">
+    <form id="login-form" method="dialog">
+        <h3>Connexion / Création</h3>
+        <input id="username" placeholder="Pseudo" required />
+        <input id="password" type="password" placeholder="Mot de passe" required />
+        <menu>
+            <button value="cancel">Annuler</button>
+            <button id="login-submit">Valider</button>
+        </menu>
+    </form>
+</dialog>
+<script src="app.js" defer></script>
+</body>
+</html>
