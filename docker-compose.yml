@@ -11,8 +11,8 @@ services:
       DB_PATH: "/app/data/db.sqlite"
     volumes:
       - petitdej_data:/app/data
-    expose:
-      - "3000"
+    ports:
+      - "3000:3000"   # accessible depuis l’extérieur
     restart: unless-stopped
     healthcheck:
       test: [ "CMD", "node", "-e", "fetch('http://localhost:3000/api/me').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))" ]
@@ -20,21 +20,5 @@ services:
       timeout: 5s
       retries: 5
 
-  caddy:
-    image: caddy:2
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      app:
-        condition: service_healthy
-    restart: unless-stopped
-
 volumes:
   petitdej_data:
-  caddy_data:
-  caddy_config:
