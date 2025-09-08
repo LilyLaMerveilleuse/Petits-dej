@@ -20,12 +20,23 @@
     <section id="calendar"></section>
 </main>
 <dialog id="reserve-dialog">
-    <form id="reserve-form" method="dialog">
+    <form id="reserve-form">
         <h3>Réserver le <span id="reserve-date"></span></h3>
         <textarea id="reserve-desc" placeholder="Description (optionnel)"></textarea>
         <menu>
-            <button value="cancel">Annuler</button>
-            <button id="reserve-confirm">Réserver</button>
+            <button type="button" id="reserve-cancel">Annuler</button>
+            <button id="reserve-confirm" type="submit">Réserver</button>
+        </menu>
+    </form>
+</dialog>
+<dialog id="login-dialog">
+    <form id="login-form">
+        <h3>Connexion / Création</h3>
+        <input id="username" placeholder="Pseudo" required />
+        <input id="password" type="password" placeholder="Mot de passe" required />
+        <menu>
+            <button type="button" id="login-cancel">Annuler</button>
+            <button type="submit" id="login-submit">Valider</button>
         </menu>
     </form>
 </dialog>
