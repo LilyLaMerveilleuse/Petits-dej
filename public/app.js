@@ -201,4 +201,29 @@ loginDialog.querySelector("form").onsubmit = async e => {
     renderCalendar();
 };
 
+// Bouton annuler → juste fermer le dialog
+document.getElementById("login-cancel").onclick = () => {
+    loginDialog.close();
+};
+
+// Formulaire → login/register
+loginDialog.querySelector("form").onsubmit = async e => {
+    e.preventDefault();
+    try {
+        await api("/api/register-or-login", {
+            method: "POST",
+            body: JSON.stringify({
+                username: usernameInput.value,
+                password: passwordInput.value
+            })
+        });
+        loginDialog.close();
+        fetchMe();
+        renderCalendar();
+    } catch (err) {
+        alert(err.message || "Erreur de connexion");
+    }
+};
+
+
 fetchMe().then(renderCalendar);
